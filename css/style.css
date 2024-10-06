@@ -26,3 +26,93 @@ main {
 .offcanvas-top{
     height: fit-content;
 }
+
+.album {
+    color: aliceblue;
+}
+
+
+.movie-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* Asegúrate de que el contenedor ocupe todo el ancho disponible */
+}
+.movie-container {
+    display: flex; /* Utiliza Flexbox */
+    justify-content: space-between; /* Espacia los elementos entre extremos */
+    align-items: center; /* Alinea verticalmente al centro */
+    padding: 10px; /* Espaciado interno */
+    border-bottom: 1px solid #ccc; /* Línea separadora opcional */
+}
+
+.star-rating {
+    font-size: 20px; /* Ajusta el tamaño de las estrellas */
+}
+
+.star-rating .fa-star {
+    color: lightgray; /* Color para estrellas vacías */
+}
+
+.star-rating .fa-star.filled {
+    color: orange; /* Color para estrellas llenas */
+}
+
+.star-rating .fa-star.empty {
+    color: lightgray; /* Color para estrellas vacías */
+}
+
+
+.movie-details {
+    background-color: white; /* Fondo blanco */
+    color: black; /* Texto negro */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.dropdown-button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color:#333;
+    color: white; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dropdown-button:hover {
+    background-color: #0056b3; /* Color de fondo más oscuro al pasar el mouse */
+}
+
+.additional-info {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd; /* Borde alrededor de la información */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Color de fondo claro */
+    display: none; /* Asegúrate de que esté oculto inicialmente */
+}
+
+.close-button {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333; /* Color del ícono de cerrar */
+}
+
+.close-button:hover {
+    color: red; /* Cambia de color al pasar el mouse */
+}
+
+.movie-container {
+    cursor: pointer; /* Cambia el cursor a una mano cuando pasa sobre el elemento */
+}
+
+.movie-container:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Cambia el fondo al pasar el mouse para dar feedback visual */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
