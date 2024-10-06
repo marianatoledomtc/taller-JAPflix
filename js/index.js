@@ -94,68 +94,54 @@ function showMovieDetails(movie) {
     closeButton.textContent = '✖';
     closeButton.classList.add('close-button');
 
-    // Estilo del botón de cerrar
-    closeButton.style.position = 'absolute';
-    closeButton.style.top = '10px';
-    closeButton.style.right = '10px';
-    closeButton.style.background = 'transparent';
-    closeButton.style.border = 'none';
-    closeButton.style.fontSize = '20px';
-    closeButton.style.cursor = 'pointer';
-    closeButton.title = 'Cerrar detalles';
+    // Añade el evento para cerrar el contenedor de detalles
+    closeButton.addEventListener('click', () => {
+        detailsContainer.remove(); // Elimina el contenedor al cerrar
+    });
+
+    // Crea el contenedor para la información adicional
+    const dropdownContainer = document.createElement('div');
+    dropdownContainer.classList.add('dropdown-container');
 
     // Crea el botón para el dropdown
     const dropdownButton = document.createElement('button');
-    dropdownButton.textContent = 'Información adicional';
+    dropdownButton.textContent = 'Additional information';
     dropdownButton.classList.add('dropdown-button');
 
-    // Crea el contenedor para la información adicional
     const additionalInfo = document.createElement('div');
     additionalInfo.classList.add('additional-info');
-    additionalInfo.style.display = 'none'; // Inicialmente oculto
 
     // Aquí ajustamos cómo se muestran los géneros
     const genreNames = movie.genres.map(genre => genre.name).join(', '); // Accede a la propiedad 'name'
     
     additionalInfo.innerHTML = `
-        <p><strong>Año de lanzamiento:</strong> ${new Date(movie.release_date).getFullYear()}</p>
-        <p><strong>Duración:</strong> ${movie.runtime} minutos</p>
-        <p><strong>Presupuesto:</strong> $${movie.budget.toLocaleString()}</p>
-        <p><strong>Ganancias:</strong> $${movie.revenue.toLocaleString()}</p>
+        <p><strong>Release date:</strong> ${new Date(movie.release_date).getFullYear()}</p>
+        <p><strong>Runtime:</strong> ${movie.runtime} minutes</p>
+        <p><strong>Budget:</strong> $${movie.budget.toLocaleString()}</p>
+        <p><strong>Revenue:</strong> $${movie.revenue.toLocaleString()}</p>
     `;
 
     // Añade el evento para mostrar/ocultar la información adicional
     dropdownButton.addEventListener('click', () => {
         const isVisible = additionalInfo.style.display === 'block';
         additionalInfo.style.display = isVisible ? 'none' : 'block';
-        dropdownButton.textContent = isVisible ? 'Información adicional' : 'Ocultar información';
+        dropdownButton.textContent = isVisible ? 'Additional information' : 'Hide information';
     });
 
-    // Añade el evento para cerrar el contenedor de detalles
-    closeButton.addEventListener('click', () => {
-        detailsContainer.remove(); // Elimina el contenedor al cerrar
-    });
-
+    // Configura el contenido del contenedor de detalles
     detailsContainer.innerHTML = `
         <h2>${movie.title}</h2>
         <p>${movie.overview}</p>
-        <p><strong>Géneros:</strong> ${genreNames}</p> <!-- Muestra los géneros -->
+        <p><strong>Genres:</strong> ${genreNames}</p> <!-- Muestra los géneros -->
     `;
 
-    // Añade el botón de cerrar y el botón de dropdown al contenedor de detalles
+    // Añade el botón de cerrar y el contenedor del dropdown al contenedor de detalles
     detailsContainer.appendChild(closeButton);
-    detailsContainer.appendChild(dropdownButton);
-    detailsContainer.appendChild(additionalInfo);
+    dropdownContainer.appendChild(dropdownButton);
+    dropdownContainer.appendChild(additionalInfo);
+    detailsContainer.appendChild(dropdownContainer); // Asegúrate de añadir el dropdown al contenedor de detalles
 
     // Limpia el contenedor y añade los detalles
     const mainContainer = document.querySelector('main');
     mainContainer.prepend(detailsContainer); // Inserta el contenedor en la parte superior
-
-    // Estiliza el contenedor de detalles
-    detailsContainer.style.position = 'relative'; // Asegúrate de que el contenedor tenga posición relativa
-    detailsContainer.style.backgroundColor = '#fff';
-    detailsContainer.style.padding = '20px';
-    detailsContainer.style.borderRadius = '8px';
-    detailsContainer.style.marginBottom = '20px';
-    detailsContainer.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)'; // Sombra
 }

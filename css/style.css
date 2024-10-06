@@ -63,19 +63,47 @@ main {
 
 
 .movie-details {
-    background-color: white; /* Fondo blanco */
-    color: black; /* Texto negro */
+    position: relative; /* Asegúrate de que el contenedor tenga posición relativa */
+    background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
 }
 
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.dropdown-container {
+    position: relative; /* Cambiado de absolute a relative */
+    text-align: right; /* Alinea el texto a la derecha */
+}
+
+.additional-info {
+    display: none; /* Inicialmente oculto */
+    position: absolute; /* Posiciona el dropdown de manera absoluta */
+    right: 0; /* Alinea a la derecha del contenedor */
+    top: 100%; /* Asegúrate de que se despliegue justo debajo */
+    background-color: #fff; /* Color de fondo del dropdown */
+    border: 1px solid #ccc; /* Borde del dropdown */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    z-index: 1000; /* Asegúrate de que el dropdown esté por encima de otros elementos */
+}
+
 .dropdown-button {
+    color:white;
     margin-top: 10px;
     padding: 10px;
-    background-color:#333;
-    color: white; 
+    background-color:	#222222;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -83,36 +111,4 @@ main {
 
 .dropdown-button:hover {
     background-color: #0056b3; /* Color de fondo más oscuro al pasar el mouse */
-}
-
-.additional-info {
-    margin-top: 10px;
-    padding: 10px;
-    border: 1px solid #ddd; /* Borde alrededor de la información */
-    border-radius: 5px; /* Bordes redondeados */
-    background-color: #f9f9f9; /* Color de fondo claro */
-    display: none; /* Asegúrate de que esté oculto inicialmente */
-}
-
-.close-button {
-    margin: 0;
-    padding: 0;
-    background: transparent;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    color: #333; /* Color del ícono de cerrar */
-}
-
-.close-button:hover {
-    color: red; /* Cambia de color al pasar el mouse */
-}
-
-.movie-container {
-    cursor: pointer; /* Cambia el cursor a una mano cuando pasa sobre el elemento */
-}
-
-.movie-container:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Cambia el fondo al pasar el mouse para dar feedback visual */
-    transition: background-color 0.3s ease; /* Transición suave */
 }
